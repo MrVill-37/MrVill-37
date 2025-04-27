@@ -1,0 +1,5 @@
+sudo apt-get update
+sudo apt install kali-tools-crypto-stego
+sudo apt install python3-pip
+sudo pip install pysha3
+sudo pip install eth-keys
