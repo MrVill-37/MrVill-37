@@ -1,0 +1,55 @@
+{
+  "vault_address": "0xeDAe4f188103fd971430c67467d90db0ED1bA92c",
+  "networks": {
+    "ethereum": {
+      "chain_id": 1,
+      "rpc_url": "https://YOUR_ETHEREUM_RPC"
+    },
+    "base": {
+      "chain_id": 8453,
+      "rpc_url": "https://YOUR_BASE_RPC"
+    },
+    "arbitrum": {
+      "chain_id": 42161,
+      "rpc_url": "https://YOUR_ARBITRUM_RPC"
+    },
+    "zksync": {
+      "chain_id": 324,
+      "rpc_url": "https://YOUR_ZKSYNC_RPC"
+    },
+    "bnb": {
+      "chain_id": 56,
+      "rpc_url": "https://YOUR_BNB_RPC"
+    }
+  },
+  "tokens": {
+    "ethereum": [
+      {
+        "symbol": "USDC",
+        "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "decimals": 6
+      }
+    ]
+  },
+  "nfts": {
+    "ethereum": [
+      {
+        "name": "ExampleNFT",
+        "address": "0x0000000000000000000000000000000000000000",
+        "token_ids": []
+      }
+    ]
+  },
+  "airdrops": {
+    "ethereum": [
+      {
+        "name": "ExampleAirdrop",
+        "contract_address": "0x0000000000000000000000000000000000000000",
+        "abi_path": "config/abis/example_airdrop.json",
+        "eligibility_method": "isEligible",
+        "claim_method": "claim",
+        "claim_args": []
+      }
+    ]
+  }
+}
