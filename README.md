@@ -18,6 +18,12 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
+Or use the helper script:
+
+```bash
+./scripts/create_virtualenv.sh
+```
+
 Edit the config at `config/airdrop_nexus.json` with your RPC URLs, token lists, NFT contracts, and airdrop ABIs.
 
 ### Import wallets
