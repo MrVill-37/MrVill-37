@@ -52,3 +52,29 @@ python3 airdrop_nexus.py plan-sweep --inventory inventory.json --vault 0xeDAe4f1
   ]
 }
 ```
+
+
+## CloudMineCrypto App CLI
+
+A lightweight CLI app concept that translates the provided product narrative into a runnable experience.
+
+### Why users avoid self-mining
+- High upfront hardware cost (ASICs, power supplies, cables)
+- Electricity and cooling requirements
+- Heat, noise, and space constraints
+- Ongoing maintenance and operational complexity
+
+### What this app provides
+- Mobile/desktop-style product messaging in a single output flow.
+- Plan visibility and reward-point estimation.
+- Explicit disclosures that this is not hardware ownership or real rig operation.
+
+### Commands
+```bash
+python3 cloudminecrypto_app.py compare
+python3 cloudminecrypto_app.py plans
+python3 cloudminecrypto_app.py estimate --plan starter --activity-score 1.3 --market-variability 0.2
+```
+
+### Compliance-style disclosure
+CloudMineCrypto does not give you ownership of mining hardware, and using the app does not mean you are operating a real Bitcoin mining rig. Rewards and rates can vary over time, and nothing shown in the app is a guarantee of future results.
