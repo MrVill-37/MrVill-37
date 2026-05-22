@@ -1,0 +1,12 @@
+[
+  {
+    "name": "uniswap",
+    "feeBps": 30,
+    "slippageBps": 50
+  },
+  {
+    "name": "sushiswap",
+    "feeBps": 30,
+    "slippageBps": 50
+  }
+]

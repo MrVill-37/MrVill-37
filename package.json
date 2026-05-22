@@ -1,0 +1,14 @@
+{
+  "name": "crypto-fund-bot",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Multi-agent crypto hedge fund bot with risk-managed execution",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

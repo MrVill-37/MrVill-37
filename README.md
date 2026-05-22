@@ -1,54 +1,74 @@
-## Airdrop Nexus (Safe Mode)
+## Crypto Fund Bot (Multi-Agent, Risk-Managed)
 
-Terminal-based, offline-capable wallet operations helper focused on **defensive** and **consent-based** workflows.
+This repository now contains a production-style baseline for a **crypto hedge fund bot** organized as specialized agents and services.
 
-### What it does
-- Imports and validates wallet lists.
-- Evaluates local airdrop eligibility rules (offline JSON allowlists).
-- Builds a **non-broadcast sweep plan** for ETH/ERC-20/NFT assets across:
-  - Ethereum
-  - Base
-  - Arbitrum
-  - zkSync
-  - BNB Chain
+## Architecture
 
-### Security posture
-- No transaction signing.
-- No transaction broadcasting.
-- No key exfiltration logic.
-- Explicitly intended for wallets you own/control with clear authorization.
+```text
+crypto-fund/
+  core/
+    provider.js
+    wallet.js
+  agents/
+    mempoolAgent.js
+    arbitrageAgent.js
+    strategyAgent.js
+    riskAgent.js
+    profitAgent.js
+  engine/
+    tradeExecutor.js
+    opportunityQueue.js
+  data/
+    priceFeeds.js
+    marketScanner.js
+  config/
+    tokens.json
+    exchanges.json
+  index.js
+```
 
-### Quick start
+## What is implemented
+
+- **Wallet/provider layer** using `ethers` with `.env` support.
+- **Market scanning** across configured DEXes.
+- **Arbitrage detection** using spread thresholds.
+- **Risk controls**:
+  - max trade size (% of equity)
+  - daily loss limits
+  - minimum profit over gas
+- **Execution engine** with safe dry-run mode.
+- **Mempool monitor** hook for pending tx analysis.
+- **Strategy optimizer** that tunes spread/slippage settings from outcomes.
+- **Profit compounding** to continuously adjust trading capital.
+
+## Quick start
+
 ```bash
-python3 airdrop_nexus.py import-wallets --file wallets.txt
-python3 airdrop_nexus.py check-eligibility --wallets wallets.txt --rules eligibility.json
-python3 airdrop_nexus.py plan-sweep --inventory inventory.json --vault 0xeDAe4f188103fd971430c67467d90db0ED1bA92c --gas-reserve-eth 0.003
+npm install
+npm test
+npm start
 ```
 
-### Example input: `wallets.txt`
-```txt
-0x1111111111111111111111111111111111111111
-0x2222222222222222222222222222222222222222
+Create a `.env` file if you want chain connectivity:
+
+```env
+RPC_HTTP=https://your-rpc
+# or
+RPC_WS=wss://your-rpc
+PRIVATE_KEY=0xyourprivatekey
+UNISWAP_ROUTER=0xYourWatchedRouter
 ```
 
-### Example input: `eligibility.json`
-```json
-{
-  "rules": {
-    "allowlists": {
-      "campaign-alpha": ["0x1111111111111111111111111111111111111111"]
-    }
-  }
-}
-```
+## Security defaults
 
-### Example input: `inventory.json`
-```json
-{
-  "0x1111111111111111111111111111111111111111": [
-    {"network": "ethereum", "kind": "eth", "token": "ETH", "amount": "0.05"},
-    {"network": "base", "kind": "erc20", "token": "0x3333333333333333333333333333333333333333", "amount": "250"},
-    {"network": "arbitrum", "kind": "nft", "token": "0x4444444444444444444444444444444444444444", "amount": "1"}
-  ]
-}
-```
+- Uses **dry-run execution** by default.
+- Does not send real swaps unless you implement router calls in `engine/tradeExecutor.js`.
+- Isolated risk checks gate execution.
+
+## Next production upgrades
+
+- Redis-backed distributed queue.
+- Flashbots/private tx relay integration.
+- On-chain DEX quoter integrations (Uniswap v3/Sushi routers).
+- Persistent trade journal + strategy backtesting.
+- Metrics/alerts (Prometheus + Grafana).
