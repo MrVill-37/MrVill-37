@@ -1,16 +1,24 @@
-## Hi there 👋
+## Wallet Monitoring Utility (Defensive)
 
-<!--
-**MrVill-37/MrVill-37** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+This repository now contains a **defensive wallet auditing script** that checks
+public blockchain metadata for addresses you own or are explicitly authorized to
+monitor.
 
-Here are some ideas to get you started:
+### What it does
+- Validates Ethereum address formatting.
+- Fetches public ETH balance and latest transaction metadata from Etherscan.
+- Flags inactivity based on a configurable threshold.
+- Exports reports to JSON.
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+### What it does **not** do
+- No private key recovery.
+- No seed brute forcing.
+- No unauthorized asset retrieval.
+
+### Usage
+```bash
+export ETHERSCAN_API_KEY="<your-key>"
+python 'seed gen 2.0' 0xYourAddressHere --inactive-days 120 --output report.json
+```
+
+> Use only with wallets you control or are legally authorized to audit.
