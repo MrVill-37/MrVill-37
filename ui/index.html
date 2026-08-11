@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Airdrop Nexus Console</title>
+  <link rel="stylesheet" href="/ui/styles.css" />
+</head>
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+  <header class="topbar">
+    <h1>Airdrop Nexus</h1>
+    <span class="pill">Futuristic Operations UI</span>
+  </header>
+
+  <main class="layout">
+    <section class="card glass">
+      <h2>Wallet Import</h2>
+      <p class="muted">One wallet per line. Invalid addresses are highlighted instantly.</p>
+      <textarea id="walletInput" rows="8" placeholder="0x1111...\n0x2222..."></textarea>
+      <div class="row">
+        <button id="validateWallets">Validate Wallets</button>
+        <span id="walletSummary" class="muted"></span>
+      </div>
+    </section>
+
+    <section class="card glass">
+      <h2>Eligibility Rules (Offline)</h2>
+      <p class="muted">Paste local JSON allowlists.</p>
+      <textarea id="rulesInput" rows="8" placeholder='{"rules":{"allowlists":{"campaign-alpha":["0x..."]}}}'></textarea>
+      <button id="checkEligibility">Check Eligibility</button>
+      <pre id="eligibilityResult" class="output"></pre>
+    </section>
+
+    <section class="card glass">
+      <h2>Sweep Planner (Non-Broadcast)</h2>
+      <p class="muted">Planning only. No signing, no broadcasting.</p>
+      <textarea id="inventoryInput" rows="10" placeholder='{"0x...": [{"network":"ethereum","kind":"eth","token":"ETH","amount":"0.05"}]}'></textarea>
+      <div class="row split">
+        <input id="vaultAddress" type="text" value="0xeDAe4f188103fd971430c67467d90db0ED1bA92c" />
+        <input id="gasReserve" type="number" value="0.003" step="0.0001" min="0" />
+      </div>
+      <button id="buildPlan">Build Plan</button>
+      <pre id="planResult" class="output"></pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>Security-first mode: explicit authorization only • Offline-capable workflow</p>
+  </footer>
+
+  <script src="/ui/app.js"></script>
+</body>
+</html>
