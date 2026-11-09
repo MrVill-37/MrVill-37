@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://mrvill-37.github.io/MrVill-37/sitemap.xml
